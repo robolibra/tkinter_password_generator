@@ -10,10 +10,12 @@ def insert_text(text_widget: tk.Text, text: str):
     text_widget.config(state="disabled")
 
 
+pass_symbol = '!@#%^-_'
+
 
 root = tk.Tk()
 root.title('Генератор секрета')
-root.geometry('300x400')
+root.geometry('300x350')
 root.resizable(False, False)
 root.configure(bg='lightgray')
 
@@ -55,13 +57,30 @@ combo['values'] = list(range(min_length, max_length + 1))
 combo.set(min_length)
 
 
-generated_text = tk.Text(frame3, background= 'white', font='Helvetica, 14', height=3, state="disabled")
-generated_text.pack(padx=5, pady=5, fill=tk.BOTH, expand=True)
+generated_text = tk.Text(frame3, background= 'white', font='Helvetica, 13', height=2, state="disabled")
+generated_text.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
 insert_text(generated_text, 'Ваш пароль будет здесь')
 
 button1 = ttk.Button(frame3, text='Сгенерировать')
-button1.pack(pady=(5, 10))
+button1.pack(pady=(0, 10))
 
+checks = []
 
+var1 = tk.IntVar(value=1)
+check1 = ttk.Checkbutton(frame4, text='A..Z', variable=var1)
+checks.append(check1)
+var2 = tk.IntVar(value=0)
+check2 = ttk.Checkbutton(frame4, text='a..z', variable=var2)
+checks.append(check2)
+var3 = tk.IntVar(value=1)
+check3 = ttk.Checkbutton(frame4, text='0..9', variable=var3)
+checks.append(check3)
+var4 = tk.IntVar(value=0)
+check4 = ttk.Checkbutton(frame4, text=pass_symbol, variable=var4)
+checks.append(check4)
+
+for check in checks:
+    check.pack(padx=10, pady=20, side=tk.LEFT)
+    
 
 root.mainloop()
