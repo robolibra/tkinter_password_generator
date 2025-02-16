@@ -32,13 +32,11 @@ def button_click(length: str, upper: bool = True , numbers: bool = False, symbol
     insert_text(generated_text, shuffled_password_text)
     copy_button.config(state='active')
 
-
 def copy_to_clipboard():
     text_to_copy = generated_text.get("1.0", tk.END).replace('\n', '')  # Get the text from the Entry widget
     root.clipboard_clear()  # Clear the clipboard
     root.clipboard_append(text_to_copy)
     copy_button.config(state='disabled')
-
 
 root = tk.Tk()
 root.title('Генератор секрета')
@@ -55,8 +53,20 @@ frame4 = ttk.Frame(root, relief=tk.GROOVE)
 frame1.pack(padx=4, pady=(4, 2), fill=tk.BOTH)
 frame2.pack(padx=4, pady=2, fill=tk.BOTH)
 frame3.pack(padx=4, pady=2, fill=tk.BOTH, expand=True)
-frame4.pack(padx=4, pady=(2, 4), fill=tk.BOTH, expand=True)
+frame4.pack(padx=4, pady=(2, 2), fill=tk.BOTH, expand=True)
 
+
+label_style = ttk.Style()
+label_style.configure('TLabel', font=("Arial", 12))
+
+check_style = ttk.Style()
+check_style.configure('TCheckbutton', font=("Arial", 12))
+
+button_style = ttk.Style()
+button_style.configure('TButton', font=("Arial", 12))
+
+radio_style = ttk.Style()
+radio_style.configure('TRadiobutton', font=("Arial", 12))
 
 radios = []
 
@@ -79,7 +89,7 @@ label1.pack(pady=5)
 min_length = 8
 max_length = 15
 combo = ttk.Combobox(frame2, state='readonly')
-combo.pack(pady=(5, 10))
+combo.pack(pady=(5, 15))
 combo['values'] = list(range(min_length, max_length + 1))
 combo.set(min_length)
 
@@ -109,7 +119,7 @@ button1.pack(side=tk.LEFT, expand=True, padx=(50, 0), pady=(0, 10))
 
 
 label2 = ttk.Label(frame4, text='Добавить символы')
-label2.pack(pady=10)
+label2.pack(pady=(10, 0))
 
 checks = []
 
