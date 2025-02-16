@@ -30,9 +30,14 @@ def button_click(length: str, upper: bool = True , numbers: bool = False, symbol
     random.shuffle(password_list)        # Shuffle the list in place
     shuffled_password_text = ''.join(password_list)  # Convert back to a string
     insert_text(generated_text, shuffled_password_text)
+    copy_button.config(state='active')
 
 
-
+def copy_to_clipboard():
+    text_to_copy = generated_text.get("1.0", tk.END).replace('\n', '')  # Get the text from the Entry widget
+    root.clipboard_clear()  # Clear the clipboard
+    root.clipboard_append(text_to_copy)
+    copy_button.config(state='disabled')
 
 
 root = tk.Tk()
@@ -86,15 +91,22 @@ generated_text.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
 generated_text.tag_configure("center", justify="center")
 insert_text(generated_text, password_text)
 
+
+icon_file = tk.PhotoImage(file="copy.png") # type: ignore
+
+copy_button = tk.Button(frame3, image=icon_file, command=copy_to_clipboard)
+copy_button.pack(side=tk.RIGHT, padx=10, pady=10, anchor='e')
+
 button1 = ttk.Button(
-    frame3, text='Сгенерировать', command=lambda: button_click(
+    frame3, text='Сгенерировать', command=lambda: button_click( 
         length=combo.get(), 
         upper=var1.get(), 
         numbers=var2.get(), 
         symbols=var3.get()
     )
 )
-button1.pack(pady=(0, 10))
+button1.pack(side=tk.LEFT, expand=True, padx=(50, 0), pady=(0, 10))
+
 
 label2 = ttk.Label(frame4, text='Добавить символы')
 label2.pack(pady=10)
