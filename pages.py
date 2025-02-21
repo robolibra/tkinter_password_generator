@@ -21,7 +21,7 @@ class GeneratorApp(tk.Tk):
         self.configure(bg='lightgray')
 
     def __place_frame(self):
-       PhraseFrame(parent=self)   
+       PasswordFrame(parent=self)   
 
 
 class PasswordFrame(ttk.Frame):
@@ -225,7 +225,7 @@ class PhraseFrame(ttk.Frame):
         radios.append(radio1)
         radio2 = ttk.Radiobutton(frame, text='Парольная фраза', variable=self.radio_var, value=2)
         radios.append(radio2)
-        radio3 = ttk.Radiobutton(frame, text='Никнейм', variable=self.radio_var, value=3, state=tk.DISABLED)
+        radio3 = ttk.Radiobutton(frame, text='Никнейм (в разработке)', variable=self.radio_var, value=3, state=tk.DISABLED)
         radios.append(radio3)
 
         for radio in radios:
