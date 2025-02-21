@@ -77,7 +77,7 @@ class PasswordFrame(ttk.Frame):
         radios.append(radio1)
         radio2 = ttk.Radiobutton(frame, text='Парольная фраза', variable=self.radio_var, value=2, command=self.destroy_frame)
         radios.append(radio2)
-        radio3 = ttk.Radiobutton(frame, text='Никнейм', variable=self.radio_var, value=3, state=tk.DISABLED)
+        radio3 = ttk.Radiobutton(frame, text='Никнейм (в разработке)', variable=self.radio_var, value=3, state=tk.DISABLED)
         radios.append(radio3)
 
         for radio in radios:
